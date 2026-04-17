@@ -4,10 +4,10 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Install system dependencies for PostgreSQL
-RUN apt-get update && apt-get install -y \
-    gcc \
-    libpq-dev \
-    pkg-config \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc=4:14.2.0-1 \
+    libpq-dev=17.9-0+deb13u1 \
+    pkg-config=1.8.1-4 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
